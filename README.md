@@ -146,11 +146,11 @@ text-decoration: line-through;
         <p>यह उच्च गुणवत्ता वाला ड्रोन है, जो कैमरे और उच्च उड़ान क्षमता के साथ आता है। यह आपके एडवेंचर और फ़ोटोग्राफ़ी अनुभव को बढ़ाता है।</p>
         
  div class="price-tag">
-            ₹<span class="price-now">36,990</span>
-            <span class="price-off">(22% OFF)</span>
+            ₹<span class="price-now">1,699</span>
+            <span class="price-off">(52% OFF)</span>
           </div>
 
-    <div class="price">₹ 750</div>
+    <div class="price">₹ 799</div>
     <a href="form.html">
     <button class="अभी-बुक-करें" onclick="c:\html">अभी-बुक-करें</button>
     </a>
