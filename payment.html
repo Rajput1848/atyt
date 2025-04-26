@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>भुगतान करें</title>
+  <style>
+    body { 
+      text-align: center; 
+      font-family: sans-serif; 
+      background: #f8f8f8; 
+      padding: 30px; 
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 500px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    img {
+      width: 300px;
+      margin: 20px 0;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .success {
+      color: green;
+      margin-top: 20px;
+      font-weight: bold;
+      display: none;
+    }
+    hr {
+      margin: 20px 0;
+    }
+    #userDetails p {
+      text-align: left;
+      margin-left: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>QR कोड स्कैन करें और भुगतान करें</h2>
+    <p><strong>राशि:</strong> ₹799</p>
+
+    <img src="124.jpeg" alt="QR Code"> <!-- यहाँ अपना QR कोड इमेज का नाम दें -->
+
+    <br>
+
+    <button onclick="confirmPayment()">मैंने भुगतान कर दिया</button>
+
+    <p class="success" id="successMsg">भुगतान करें</p>
+
+    <div id="userDetails"></div>
+  </div>
+
+  <script>
+    // LocalStorage से यूज़र की जानकारी पढ़ना
+    const user = JSON.parse(localStorage.getItem("userData"));
+    if (user) {
+      document.getElementById("userDetails").innerHTML = `
+        <hr>
+        <h3>आपकी जानकारी:</h3>
+        <p><strong>नाम:</strong> ${user.name}</p>
+        <p><strong>फोन:</strong> ${user.phone}</p>
+        <p><strong>प्रोफेशन:</strong> ${user.profession}</p>
+        <p><strong>पता:</strong> ${user.address}</p>
+      `;
+    }
+
+    function confirmPayment() {
+      document.getElementById("successMsg").style.display = "block";
+      console.log("User Data Sent:", user);
+
+      // अगर Success Message के बाद Redirect करना हो तो यह UnComment कर सकते हो:
+      /*
+      setTimeout(function() {
+        window.location.href = "thankyou.html"; // Thank you पेज पर भेजेगा
+      }, 3000);
+      */
+    }
+  </script>
+
+</body>
+</html>
