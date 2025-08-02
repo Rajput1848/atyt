@@ -47,17 +47,42 @@
       text-align: left;
       margin-left: 30px;
     }
-    @media(max-width: 600px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
-  }
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-}
+    #codNote {
+      display: none;
+      margin-top: 15px;
+      background: #fff3cd;
+      padding: 10px;
+      border: 1px solid #ffeeba;
+      border-radius: 5px;
+      color: #856404;
+    }
+    .payment-options {
+      margin-top: 20px;
+      text-align: left;
+    }
+    .payment-options label {
+      display: block;
+      margin: 10px 0;
+      font-size: 16px;
+    }
 
+    @media(max-width: 600px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      .payment-options {
+        text-align: center;
+      }
+      #userDetails p {
+        margin-left: 0;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -65,9 +90,25 @@
   <div class="box">
     <h2>QR कोड स्कैन करें और भुगतान करें</h2>
     <p><strong>राशि:</strong> ₹799</p>
-<a href="https://ibb.co/bgVHLtmk"><img src="https://i.ibb.co/cc9btq3j/2222.jpg" alt="2222" border="0"></a> <!-- यहाँ अपना QR कोड इमेज का नाम दें -->
-  <p>UPI (GPay, PhonePe, Paytm) </p>
-    <p><strong>UPI ID:</strong> <span style="color:green;"> 1848ashish@fam </span></p>
+    <a href="https://ibb.co/bgVHLtmk"><img src="https://i.ibb.co/cc9btq3j/2222.jpg" alt="2222" border="0"></a>
+    <p>UPI (GPay, PhonePe, Paytm) </p>
+    <p><strong>UPI ID:</strong> <span style="color:green;">1848ashish@fam</span></p>
+
+    <br>
+
+    <div class="payment-options">
+      <h3>भुगतान का तरीका चुनें:</h3>
+      <label>
+        <input type="radio" name="paymentMethod" value="online" checked> ऑनलाइन पेमेंट
+      </label>
+      <label>
+        <input type="radio" name="paymentMethod" value="cod"> कैश ऑन डिलीवरी (COD)
+      </label>
+
+      <div id="codNote">
+        <strong>नोट:</strong> कैश ऑन डिलीवरी पर <span style="color:red;">20%</span> एडवांस पेमेंट अनिवार्य है।
+      </div>
+    </div>
 
     <br>
 
@@ -92,16 +133,25 @@
       `;
     }
 
+    // COD Note Toggle
+    const paymentRadios = document.getElementsByName("paymentMethod");
+    const codNote = document.getElementById("codNote");
+
+    for (let radio of paymentRadios) {
+      radio.addEventListener("change", function () {
+        if (this.value === "cod") {
+          codNote.style.display = "block";
+        } else {
+          codNote.style.display = "none";
+        }
+      });
+    }
+
     function confirmPayment() {
       document.getElementById("successMsg").style.display = "block";
       console.log("User Data Sent:", user);
-
-      // अगर Success Message के बाद Redirect करना हो तो यह UnComment कर सकते हो:
-      /*
-      setTimeout(function() {
-        window.location.href = "thankyou.html"; // Thank you पेज पर भेजेगा
-      }, 3000);
-      */
+      // Redirect example:
+      // setTimeout(() => { window.location.href = "thankyou.html"; }, 3000);
     }
   </script>
 
