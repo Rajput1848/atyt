@@ -1,161 +1,183 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
   <title>भुगतान करें</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
-    body { 
-      text-align: center; 
-      font-family: sans-serif; 
-      background: #f8f8f8; 
-      padding: 30px; 
+    body {
+      font-family: "Noto Sans", Arial, sans-serif;
+      background:#f6f7fb;
+      margin:0;
+      padding:30px 15px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
     }
-    .box {
-      background: white;
-      padding: 20px;
-      margin: 0 auto;
-      max-width: 500px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    .box{
+      background:#fff;
+      width:100%;
+      max-width:440px;
+      padding:22px;
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(20,20,50,0.08);
+      text-align:left;
     }
-    img {
-      width: 300px;
-      margin: 20px 0;
-      border: 1px solid #ccc;
-      padding: 10px;
-      border-radius: 10px;
+    h2{ margin:0 0 10px; font-size:20px; color:#222; }
+    p{ margin:6px 0 14px; color:#444; }
+    .methods { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:14px; }
+    .method {
+      display:flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:8px; cursor:pointer;
+      border:1px solid #e6e9ef;
     }
-    button {
-      padding: 10px 20px;
-      background: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
+    .method input { transform:scale(1.1); }
+    .amount-row { display:flex; align-items:center; justify-content:space-between; margin-top:12px; }
+    .amount {
+      font-size:22px; font-weight:700; color:#111;
     }
-    .success {
-      color: green;
-      margin-top: 20px;
-      font-weight: bold;
-      display: none;
+    .note { font-size:13px; color:#666; margin-top:10px; }
+    .pay-btn {
+      display:block;
+      width:100%;
+      text-align:center;
+      padding:12px 14px;
+      margin-top:18px;
+      border-radius:8px;
+      text-decoration:none;
+      font-size:16px;
+      font-weight:600;
+      border:none;
+      cursor:pointer;
+      background:#28a745; 
+      color:#fff;
     }
-    hr {
-      margin: 20px 0;
+    .small-input { width:120px; padding:8px; border-radius:6px; border:1px solid #ddd; }
+    #qrBox {
+      display:none;
+      text-align:center;
+      margin-top:15px;
     }
-    #userDetails p {
-      text-align: left;
-      margin-left: 30px;
+    #qrBox img {
+      width:200px;
+      height:200px;
+      border:1px solid #ccc;
+      padding:5px;
+      border-radius:8px;
+      background:#fff;
     }
-    #codNote {
-      display: none;
-      margin-top: 15px;
-      background: #fff3cd;
-      padding: 10px;
-      border: 1px solid #ffeeba;
-      border-radius: 5px;
-      color: #856404;
-    }
-    .payment-options {
-      margin-top: 20px;
-      text-align: left;
-    }
-    .payment-options label {
-      display: block;
-      margin: 10px 0;
-      font-size: 16px;
-    }
-
-    @media(max-width: 600px) {
-      .container {
-        flex-direction: column;
-        align-items: center;
-      }
-      img {
-        max-width: 100%;
-        height: auto;
-      }
-      .payment-options {
-        text-align: center;
-      }
-      #userDetails p {
-        margin-left: 0;
-        text-align: center;
-      }
+    @media(max-width:420px){
+      .methods { flex-direction:column; }
     }
   </style>
 </head>
 <body>
-
   <div class="box">
-    <h2>QR कोड स्कैन करें और भुगतान करें</h2>
-    <p><strong>राशि:</strong> ₹799</p>
-    <a href="https://ibb.co/bgVHLtmk"><img src="https://i.ibb.co/cc9btq3j/2222.jpg" alt="2222" border="0"></a>
-    <p>UPI (GPay, PhonePe, Paytm) </p>
-    <p><strong>UPI ID:</strong> <span style="color:green;">1848ashish@fam</span></p>
+    <h2>भुगतान विकल्प - राशि: ₹799</h2>
+    <p>कृपया भुगतान का तरीका चुनें।</p>
 
-    <br>
-
-    <div class="payment-options">
-      <h3>भुगतान का तरीका चुनें:</h3>
-      <label>
-        <input type="radio" name="paymentMethod" value="online" checked> Online Payment
-      </label>
-      <label>
-        <input type="radio" name="paymentMethod" value="cod"> Cash On Delivery (COD)
+    <div class="methods" role="radiogroup" aria-label="भुगतान विकल्प">
+      <label class="method">
+        <input type="radio" name="payMethod" id="method-upi" value="upi" checked>
+        <span>UPI पे</span>
       </label>
 
-      <div id="codNote">
-        <strong>नोट:</strong> कैश ऑन डिलीवरी पर <span style="color:red;">20%</span> एडवांस पेमेंट अनिवार्य है। ( राशि: ₹159 )
-      </div>
+      <label class="method">
+        <input type="radio" name="payMethod" id="method-cod" value="cod">
+        <span>Cash on Delivery (COD)</span>
+      </label>
+
+      <label class="method">
+        <input type="radio" name="payMethod" id="method-qr" value="qr">
+        <span>QR Code </span>
+      </label>
     </div>
 
-    <br>
+    <div id="upiAmountBox">
+      <label for="amount">राशि (₹): </label>
+      <input id="amount" class="small-input" type="number" min="1" step="1" value="799" />
+    </div>
 
-    <button onclick="confirmPayment()">मैंने भुगतान कर दिया</button>
+    <div class="amount-row">
+      <div>अंतिम राशि:</div>
+      <div class="amount" id="finalAmount">₹799</div>
+    </div>
 
-    <p class="success" id="successMsg">भुगतान करें</p>
+    <!-- Payment button -->
+    <a id="payButton" class="pay-btn"
+       href="upi://pay?pa=1848ashish@fam=Ashish%20Rajput&am=799&cu=INR">
+       भुगतान करें
+    </a>
 
-    <div id="userDetails"></div>
+    <!-- QR Code Box -->
+    <div id="qrBox">
+      <p>इस QR को स्कैन करके UPI पेमेंट करें:</p>
+      <!-- Google Chart API से QR कोड -->
+      <a href="https://imgbb.com/"><img src="https://i.ibb.co/cc9btq3j/2222.jpg" alt="2222" border="0" /></a> 
+    </div>
   </div>
 
   <script>
-    // LocalStorage से यूज़र की जानकारी पढ़ना
-    const user = JSON.parse(localStorage.getItem("userData"));
-    if (user) {
-      document.getElementById("userDetails").innerHTML = `
-        <hr>
-        <h3>आपकी जानकारी:</h3>
-        <p><strong>नाम:</strong> ${user.name}</p>
-        <p><strong>फोन:</strong> ${user.phone}</p>
-        <p><strong>प्रोफेशन:</strong> ${user.profession}</p>
-        <p><strong>पता:</strong> ${user.address}</p>
-      `;
+    const UPI_ID = "8816058313@upi";
+    const UPI_NAME = "Ashish Rajput";
+
+    const methodUpi = document.getElementById("method-upi");
+    const methodCod = document.getElementById("method-cod");
+    const methodQr = document.getElementById("method-qr");
+    const amountInput = document.getElementById("amount");
+    const finalAmountEl = document.getElementById("finalAmount");
+    const payButton = document.getElementById("payButton");
+    const upiAmountBox = document.getElementById("upiAmountBox");
+    const qrBox = document.getElementById("qrBox");
+    const qrImage = document.getElementById("qrImage");
+
+    // UPI लिंक बनाने का फ़ंक्शन
+    function buildUpiHref(amount) {
+      const pa = encodeURIComponent(UPI_ID);
+      const pn = encodeURIComponent(UPI_NAME);
+      const am = encodeURIComponent(String(amount));
+      return `upi://pay?pa=${pa}&pn=${pn}&am=${am}&cu=INR`;
     }
 
-    // COD Note Toggle
-    const paymentRadios = document.getElementsByName("paymentMethod");
-    const codNote = document.getElementById("codNote");
-
-    for (let radio of paymentRadios) {
-      radio.addEventListener("change", function () {
-        if (this.value === "cod") {
-          codNote.style.display = "block";
-        } else {
-          codNote.style.display = "none";
-        }
-      });
+    // QR कोड URL बनाना
+    function buildQr(amount) {
+      const url = buildUpiHref(amount);
+      return `https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=${encodeURIComponent(url)}`;
     }
 
-    function confirmPayment() {
-      document.getElementById("successMsg").style.display = "block";
-      console.log("User Data Sent:", user);
-      // Redirect example:
-      // setTimeout(() => { window.location.href = "thankyou.html"; }, 3000);
+    function updateUI() {
+      let amount = Number(amountInput.value) || 0;
+
+      if (methodCod.checked) {
+        amount = 159; // COD पर fix
+        upiAmountBox.style.display = "none";
+        qrBox.style.display = "none";
+        payButton.style.display = "block";
+        payButton.href = buildUpiHref(amount);
+      } else if (methodUpi.checked) {
+        if (amount < 1) amount = 1;
+        upiAmountBox.style.display = "block";
+        qrBox.style.display = "none";
+        payButton.style.display = "block";
+        payButton.href = buildUpiHref(amount);
+      } else if (methodQr.checked) {
+        if (amount < 1) amount = 1;
+        upiAmountBox.style.display = "block";
+        qrBox.style.display = "block";
+        payButton.style.display = "none";
+        qrImage.src = buildQr(amount);
+      }
+
+      finalAmountEl.textContent = "₹" + amount;
     }
+
+    methodUpi.addEventListener("change", updateUI);
+    methodCod.addEventListener("change", updateUI);
+    methodQr.addEventListener("change", updateUI);
+    amountInput.addEventListener("input", updateUI);
+
+    updateUI();
   </script>
-
 </body>
 </html>
-
-
