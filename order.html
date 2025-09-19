@@ -1,96 +1,82 @@
-<!doctype html>
-<html lang="hi">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ऑर्डर करें</title>
+
+  <title>जानकारी भरें</title>
   <style>
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fff8e7 url('https://png.pngtree.com/thumb_back/fw800/background/20231004/pngtree-diwali-festival-background-lamp-image_13563392.png') no-repeat center top;
-      background-size: cover;
-      color: #333;
-    }
-    header {
-      background: #ff6f00;
-      color: #fff;
-      padding: 15px;
+      font-family: sans-serif;
+      background: #f0f0f0;
+      padding: 30px;
       text-align: center;
-      font-size: 22px;
-      font-weight: bold;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     }
-    .container {
-      max-width: 450px;
-      margin: 40px auto;
-      padding: 20px;
-      background: rgba(255,255,255,0.9);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    h2 {
-      text-align: center;
-      color: #d84315;
-      margin-bottom: 20px;
-    }
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 12px;
-      color: #444;
+    .form-box {
+      background: white;
+      padding: 30px;
+      max-width: 500px;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     input, textarea {
       width: 100%;
       padding: 10px;
-      margin-top: 5px;
-      border-radius: 6px;
+      margin: 10px 0;
+      border-radius: 5px;
       border: 1px solid #ccc;
-      font-size: 15px;
     }
-    .btn {
-      display: block;
-      width: 100%;
-      margin-top: 20px;
-      padding: 12px;
-      background: #ff6f00;
-      color: #fff;
-      font-size: 16px;
-      font-weight: bold;
+    button {
+      padding: 10px 20px;
+      background: #4CAF50;
+      color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 5px;
       cursor: pointer;
+      font-size: 1em;
     }
-    .btn:hover {
-      background: #e65100;
-    }
-    footer {
-      text-align: center;
-      margin-top: 30px;
-      font-size: 14px;
-      color: #555;
-    }
+    @media(max-width: 600px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
   </style>
 </head>
 <body>
-  <header>🎇 WIN Drone दिवाली ऑफ़र 🎇</header>
 
-  <div class="container">
-    <h2>ऑर्डर फॉर्म ✨</h2>
-    <form>
-      <label>नाम</label>
-      <input type="text" placeholder="अपना नाम लिखें" required>
-
-      <label>मोबाइल नंबर</label>
-      <input type="tel" placeholder="10 अंकों का मोबाइल नंबर" required>
-
-      <label>पता</label>
-      <textarea rows="3" placeholder="पूरा पता लिखें" required></textarea>
-
-      <button type="submit" class="btn">✨ ऑर्डर कन्फर्म करें ✨</button>
+  <div class="form-box">
+    <h2>अपनी जानकारी भरें</h2>
+    <form id="userForm">
+      <input type="text" name="name" placeholder="पूरा नाम" required>
+      <input type="text" name="phone" placeholder="फ़ोन नंबर" required>
+      <input type="text" name="profession" placeholder="ईमेल" required>
+      <textarea name="address" rows="4" placeholder="पूरा पता" required></textarea>
+     <a href="c:\index.html\index.html\payment.html">
+      <button type="submit">आगे बढ़ें और भुगतान करें</button>
+     </a>
     </form>
   </div>
 
-  <footer>© 2025 WIN • सपोर्ट: 8816058313</footer>
+  <script>
+    document.getElementById("userForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // User ki detail collect karo
+      const name = e.target.name.value;
+      const phone = e.target.phone.value;
+      const profession = e.target.profession.value;
+      const address = e.target.address.value;
+
+      // In details ko localStorage mein temporarily save karo
+      localStorage.setItem("userData", JSON.stringify({ name, phone, profession, address }));
+
+      // Payment page par redirect karo
+      window.location.href = "payment.html";
+    });
+  </script>
+
 </body>
 </html>
+
