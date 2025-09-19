@@ -1,271 +1,116 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    
-   
-
-    <title>No1Shop - हमारी ऑनलाइन शॉप</title>
-</title>
-    <meta name="google-site-verification" content="uHSUEhcqMK4cHhe7UTM0FOhbezVWGqAanhNbpYqspBE" />
-    
-    <link rel="stylesheet" href="styles.css"><!--Extrnal css file link-->
-<style>
-    /*basic styling */
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ATYT — दिवाली ड्रोन ऑफर</title>
+  <style>
     body {
-        font-family: Arial, sans-serif ;
-        margin: 0;
-        padding: 0;
-        background-color: #f8f8f8;
+      margin:0;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(180deg, #0f0f2d 0%, #1a1a40 100%);
+      color: #fff;
+      text-align: center;
     }
-   header{
-       background-color: #333;
-       color: white;
-       padding: 15px;
-       text-align: center;
-   }
-    nav ul{
-       list-style: none;
-       padding: 0;
-
-   }
-   nav ul li{
-    display: inline;
-    margin: 015px;
-   }
-   nav ul li a.{
-    
-    
-    color: white;
-    text-decoration: none;
-   }
-
-   .product-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
-   }
-.product{
-    background-color: white;
-    padding: 20px;
-    margin: 10px;
-    width: 250px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0,1);
-    text-align: center;
-}
-.product{
-    width: 100;
-    height: auto;
-    border-radius: 8px;
-}
-.product h3{
-    font-size: 1.2;
-    margin: 10px 0;
-
-}
-.product p{
-    font-size: 1em;
-    color: #777;
-
-}
-.price{
-    font-size: 1em;
-    color: #333;
-    margin: 10px 0;
-}
-.price{
-    
-    border: none;
-    padding: 10px;
-    font-size: 1.5em;
-    border-radius: 5px;
-    margin: 7px;
-}
-.अभी-बुक-करें{
-background-color: #4caf50;
-color: white;
-border: none;
-padding: 10px;
-font-size: 1em;
-cursor: pointer;
-border-radius: 5px;
-}
-.अभी-बुक-करें:hover{
-background-color: #45a049;
-}
-footer{
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
-    bottom: 0;
-}
-    footer:hover{
-    color: #45a049;
-}
-.price-off {
-  color: green;
-  font-size: 16px;
-  
-  margin-left: 5px;
-
-}
-.price-now{
-text-decoration: line-through;
-} 
-a:link{
-    
-    color:white
-    background-color:white
-}
-a:hover{
-    color:green
-
-}
-    #aa:hover{
-    color: #25D366;;
-}
-#bb:hover{
-    color: gold;
-}
-    img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-   
-@media(max-width: 600px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
-  }
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-}
-
-
-</style>
-
+    header {
+      padding: 16px;
+      background: #111;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+      color: #ffb703;
+    }
+    .whatsapp {
+      background:#25D366;
+      padding:8px 14px;
+      border-radius:6px;
+      color:#042;
+      font-weight:600;
+      text-decoration:none;
+    }
+    .hero {
+      padding: 40px 20px;
+    }
+    .hero h2 {
+      font-size: 34px;
+      margin-bottom: 12px;
+      color: #ffda79;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #ccc;
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+    .offer-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .offer-box img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+    .price {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffb703;
+    }
+    .old-price {
+      text-decoration: line-through;
+      font-size: 16px;
+      color: #aaa;
+      margin-left: 8px;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 12px 20px;
+      background: #ffb703;
+      color: #111;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    footer {
+      margin-top: 30px;
+      padding: 16px;
+      font-size: 14px;
+      color: #aaa;
+      border-top: 1px dashed rgba(255,255,255,0.2);
+    }
+  </style>
 </head>
-
-  <!-- WhatsApp Support Button -->
-  <a href="https://wa.me/8816058313" 
-     style="position: fixed; bottom: 20px; right: 20px; background-color: #25D366; color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">
-     WhatsApp Support
-  </a>
-
-
 <body>
-    <header style="background-color: #222; color: white; padding: 20px; text-align: center;">
-  <h1>ATYT Drone Store</h1>
-  <p>High-performance drones at best prices</p>
-</header>
+  <header>
+    <h1>WIN - ATYT</h1>
+    <a class="whatsapp" href="https://wa.me/918816058313" target="_blank">WhatsApp सपोर्ट</a>
+  </header>
 
-    <!-- Header Section-->
-     <header>
-        <h1 id="bb">Welcome to Our E-commerce Store</h1>
-        <nav>
-            <ul>
-                <li><a href="#" style="color: white;">HOME</a></li>
-                <li><a href="#Products" style="color: white;">उत्पाद</a></li>
-                <li><a href="#contact"></a>संपर्क करें</a></li>
-
-         </ul>
-        </nav>
-     </header>
-    <!-- product display section-->
-     <main id="product">
-     <h2 id="ashish" style="text-align: center; font-size: 28px; margin: 20px 0; color: #0073e6; ">
-  भारत का सबसे भरोसेमंद ड्रोन  <span style="color: #007bff;">NO1</span>
-</h2>
-      <div class="product-container">
-        <!-- Drone Product -->
-    <div Class="product">
-        
-        <a href="https://ibb.co/93c6WW3s"><img src="https://i.ibb.co/wrBV44rM/41.jpg" alt="41" border="0" width="300:height300"></a>
-        
-        <h3>DRONE</h3>
-        <p id="aa">यह उच्च गुणवत्ता वाला ड्रोन है, जो कैमरे और उच्च उड़ान क्षमता के साथ आता है। यह आपके एडवेंचर और फ़ोटोग्राफ़ी अनुभव को बढ़ाता है।</p>
-      <div>
-            ₹<span class="price-now">1,699</span>
-            <span class="price-off">(52% OFF)</span>
-      </div>
-          
-    <div class="price">₹ 799</div>
-    <a href="c:\Users\om\Desktop\html\index.html\form.html.html">
-    <a href="order.html" class="buy-btn"><button style="background-color: #004080; color: white; padding: 10px 20px;">अभी-खरीदें</button></a>
-      <p>Drone Model 1 - ₹1,699 (47% OFF) ₹799</p>
-
-       
-    </a>
-    </div>
-      </div>
-     </main>
-    <Br>
-   <section id="return-policy" style="padding: 40px; background-color: #f9f9f9; color: #333;">
-  <div style="max-width: 1000px; margin: auto;">
-    <h2 style="font-size: 32px; margin-bottom: 20px; color: #111;">Return & Refund Policy</h2>
-    <p style="font-size: 18px; line-height: 1.8;">
-      हम अपने ग्राहकों की संतुष्टि को सर्वोपरि मानते हैं। यदि आपने हमारे उत्पाद से संबंधित कोई समस्या अनुभव की है, तो हम आपकी सहायता करने के लिए हमेशा तत्पर हैं।
-    </p>
-
-    <h3 style="margin-top: 30px;">1. रिटर्न की समयसीमा:</h3>
-    <p style="font-size: 16px;">
-      आप प्रोडक्ट की डिलीवरी के 7 दिनों के भीतर रिटर्न रिक्वेस्ट कर सकते हैं, यदि वह निम्नलिखित शर्तों को पूरा करता है:
-      <ul style="margin-left: 20px;">
-        <li>प्रोडक्ट डैमेज या डिफेक्टिव हो</li>
-        <li>गलत प्रोडक्ट भेजा गया हो</li>
-        <li>प्रोडक्ट सील/पैकिंग में हो और उपयोग नहीं किया गया हो</li>
-      </ul>
-    </p>
-
-    <h3 style="margin-top: 30px;">2. रिफंड प्रोसेस:</h3>
-    <p style="font-size: 16px;">
-      रिटर्न अप्रूव होने के बाद, आपका रिफंड 5-7 वर्किंग डेज़ में आपके बैंक अकाउंट या UPI पर प्रोसेस कर दिया जाएगा।
-    </p>
-
-    <h3 style="margin-top: 30px;">3. रिटर्न कैसे करें?</h3>
-    <p style="font-size: 16px;">
-      रिटर्न के लिए कृपया हमारी <a href="https://wa.me/8816058313" target="_blank" style="color: #25D366; font-weight: bold;">WhatsApp Support</a> टीम से संपर्क करें। आपको ऑर्डर आईडी, प्रोडक्ट फोटो, और समस्या का विवरण देना होगा।
-    </p>
-
-    <h3 style="margin-top: 30px;">4. अपवाद:</h3>
-    <p style="font-size: 16px;">
-      निम्नलिखित वस्तुओं पर रिटर्न लागू नहीं है:
-      <ul style="margin-left: 20px;">
-        <li>यूज़ किए गए प्रोडक्ट</li>
-        <li>डिजिटल आइटम्स / डाउनलोडेबल कंटेंट</li>
-        <li>कस्टमाइज़ किए गए या पर्सनलाइज़ प्रोडक्ट्स</li>
-      </ul>
-    </p>
-
-    <p style="margin-top: 30px; font-size: 16px;">
-      हमारी पॉलिसी से संबंधित किसी भी सहायता के लिए, आप हमें <a href="mailto:ashishrajput9992131848@gmail.com" style="color: #007BFF;">ईमेल</a> कर सकते हैं या <strong>8816058313</strong> पर WhatsApp करें।
-    </p>
-  </div>
-</section>
- 
-
-<!-- contact Info Section-->
- <section id="contact"class="contact-onfo" style="background-color: gainsboro;">
-<h3 style="text-align: center;">संपर्क जानकारी</h3>
-<p style="text-align: center;"><strong>ईमेल.</strong><a href="mailto:ar3434613@gmail.com" style="color: black">ar3434613@gmail.com</a></p>
-<p style="text-align: center;" sty><strong>पता:</strong>New Delhi</p>
-
- </section>
-
-<!-- Footer Section-->
- <footer>
-    <p>&copy; 2025 मेरी ईकॉमर्स वेबसाइट. सभी अधिकार सुरक्षित हैं.</p>
-<a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=468496&ref_=footer_privacy"> Privacy Notice </a>
- </footer>
+  <section class="hero">
+    <h2>🎇 दिवाली स्पेशल ड्रोन ऑफ़र 🎇</h2>
+    <p>इस दिवाली, पाएं WIN ड्रोन पर शानदार छूट! COD पर ₹159 का अतिरिक्त डिस्काउंट और फास्ट डिलीवरी।</p>
 
 
+<div class="offer-box">
+    <a href="https://ibb.co/93c6WW3s"><img src="https://i.ibb.co/wrBV44rM/41.jpg" alt="41" border="0" /></a>
+  <div class="price">₹6,499 <span class="old-price">₹8,499</span></div>
+  <p style="color:#ccc;font-size:14px;margin:8px 0;">COD पर ऑर्डर करें और ₹159 का डिस्काउंट पाएं। सीमित स्टॉक!</p>
+  <a class="btn" href="order.html">अभी खरीदें</a>
+</div>
+
+  </section>
+
+  <footer>
+    © 2025 WIN • सपोर्ट: <a href="https://wa.me/918816058313" style="color:inherit">8816058313</a>
+  </footer>
 </body>
 </html>
